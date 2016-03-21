@@ -1,0 +1,7 @@
+<!-- In the view, add a single search field (and search button). The user should be able to type any part of an assembly's name, a hit's match_gene_name OR a gene's dna field. When the search button is pressed, the page will reload and the user will be shown all of the hits for which any of those things match. -->
+
+<h1>Search the database: <%= @assembly.name %></h1>
+<%= form_tag(reports_all_data_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Database" %>
+  <%= submit_tag "Search" %>
+<% end %>

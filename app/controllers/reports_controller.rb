@@ -19,10 +19,15 @@ class ReportsController < ApplicationController
     # end
     @hits = @assembly.hits
     # @hits.sort! {|a, b| b.percent_similarity <=> a.percent_similarity}
-    # @hits.order(percent_similarity: :desc)
+    @hits.order(percent_similarity: :desc)
 
-    @hits.where(subject_id: Gene.where(sequence_id: Sequence.where(assembly_id: @assembly.id))).order(percent_similarity: :desc)
+    # @hits.where(subject_id: Gene.where(sequence_id: Sequence.where(assembly_id: @assembly.id))).order(percent_similarity: :desc)
     @memory_used = memory_in_mb
+  end
+
+  def search
+    @assembly = Assembly.all
+    
   end
 
   private def memory_in_mb
