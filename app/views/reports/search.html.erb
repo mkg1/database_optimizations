@@ -1,7 +1,55 @@
 <!-- In the view, add a single search field (and search button). The user should be able to type any part of an assembly's name, a hit's match_gene_name OR a gene's dna field. When the search button is pressed, the page will reload and the user will be shown all of the hits for which any of those things match. -->
 
-<h1>Search the database: <%= @assembly.name %></h1>
-<%= form_tag(reports_all_data_path, :method => "get", id: "search-form") do %>
+<!-- <h1>Search the database: </h1>
+<%= form_tag(search_reports_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Database" %>
   <%= submit_tag "Search" %>
-<% end %>
+<% end %> -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Assemblies</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assemblies.each_with_index do |assembly, i| %>
+      <tr>
+        <td><%= "#{i+1}) #{assembly.name}" %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Genes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genes.each_with_index do |gene, i| %>
+      <tr>
+        <td><%= "#{i+1}) #{gene.dna}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hits</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hits.each_with_index do |hit, i| %>
+      <tr>
+        <td><%= "#{i+1}) #{hit.match_gene_name}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

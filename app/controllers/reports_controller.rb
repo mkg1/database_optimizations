@@ -26,8 +26,11 @@ class ReportsController < ApplicationController
   end
 
   def search
-    @assembly = Assembly.all
-    
+    @q = "%#{params[:search]}%"
+    # @assembly = Assembly.all
+    @assemblies = Assembly.where("name LIKE ?", @q)
+    @genes = Gene.where("dna LIKE ?", @q)
+    @hits = Hit.where("match_gene_name LIKE ?", @q)
   end
 
   private def memory_in_mb

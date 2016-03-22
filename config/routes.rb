@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'reports/all_data'
   get 'reports/search'
+  post 'reports/search' => 'reports#search', as: 'search_reports'
   # resources :reports do
   #   collection do
   #     get 'search'
