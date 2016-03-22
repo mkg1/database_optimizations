@@ -6,11 +6,15 @@
   </thead>
 
   <tbody>
-    <% assemblies.each_with_index do |assembly, i| %>
-      <tr>
-        <td><%= "#{i+1}) #{assembly.name}" %></td>
-      </tr>
+    <% if assemblies.length == 0 %>
+      <tr><td>No assemblies matched your search.</td></tr>
+    <% else %>
+      <% assemblies.each_with_index do |assembly, i| %>
+        <tr>
+          <td><%= "#{i+1}) #{assembly.name}" %></td>
+        </tr>
       <% end %>
+    <% end %>
   </tbody>
 </table><br>
 
@@ -22,10 +26,14 @@
   </thead>
 
   <tbody>
-    <% genes.each_with_index do |gene, i| %>
-      <tr>
-        <td><%= "#{i+1}) #{gene.dna}" %></td>
-      </tr>
+    <% if genes.length == 0 %>
+      <tr><td>No genes matched your search.</td></tr>
+    <% else %>
+      <% genes.each_with_index do |gene, i| %>
+        <tr>
+            <td><%= "#{i+1}) #{gene.dna}" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table><br>
@@ -38,10 +46,14 @@
   </thead>
 
   <tbody>
-    <% hits.each_with_index do |hit, i| %>
-      <tr>
-        <td><%= "#{i+1}) #{hit.match_gene_name}" %></td>
-      </tr>
+    <% if hits.length == 0 %>
+      <tr><td>No hits matched your search.</td></tr>
+    <% else %>
+      <% hits.each_with_index do |hit, i| %>
+        <tr>
+          <td><%= "#{i+1}) #{hit.match_gene_name}" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

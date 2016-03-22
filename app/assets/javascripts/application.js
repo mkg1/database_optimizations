@@ -14,11 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-// function refresh_bid() {
-//   var id = $("#bid_item_id").val();
-//   $.getScript("/items/" + id + "/refresh");
-// }
-//
-// setInterval(refresh_bid, 5000);
