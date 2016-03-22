@@ -1,0 +1,47 @@
+<table>
+  <thead>
+    <tr>
+      <th>Assemblies</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% assemblies.each_with_index do |assembly, i| %>
+      <tr>
+        <td><%= "#{i+1}) #{assembly.name}" %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Genes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% genes.each_with_index do |gene, i| %>
+      <tr>
+        <td><%= "#{i+1}) #{gene.dna}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hits</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% hits.each_with_index do |hit, i| %>
+      <tr>
+        <td><%= "#{i+1}) #{hit.match_gene_name}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
