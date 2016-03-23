@@ -54,17 +54,19 @@ class ReportsController < ApplicationController
   end
 
   def import
-    CSV.foreach(params[:file].path, headers: true) do |row|
-      a = Assembly.create!(name: row["Assembly Name"], run_on: row["Assembly Date"])
-      s = Sequence.create!(dna: row["Sequence"], quality: row["Sequence Quality"], assembly_id: a.id)
-      g = Gene.create!(dna: row["Gene Sequence"], starting_position: row["Gene Starting Position"], direction: row["Gene Direction"], sequence_id: s.id)
-      h = Hit.create!(match_gene_name: row["Hit Name"], match_gene_dna: ["Hit Sequence"], percent_similarity: row["Hit Similarity"], subject_id: g.id, subject_type: 'gene')
-    # @import = Array.new
-    # CSV.foreach(params[:file].path, headers: true) do |row|
-    #   @import << row[0]
-    # @assembly = Assembly.import(params[:file])
+    ImportCsvJob.perform_later()
 
-    end
+    # CSV.foreach(params[:file].path, headers: true) do |row|
+    #   a = Assembly.create!(name: row["Assembly Name"], run_on: row["Assembly Date"])
+    #   s = Sequence.create!(dna: row["Sequence"], quality: row["Sequence Quality"], assembly_id: a.id)
+    #   g = Gene.create!(dna: row["Gene Sequence"], starting_position: row["Gene Starting Position"], direction: row["Gene Direction"], sequence_id: s.id)
+    #   h = Hit.create!(match_gene_name: row["Hit Name"], match_gene_dna: ["Hit Sequence"], percent_similarity: row["Hit Similarity"], subject_id: g.id, subject_type: 'gene')
+    # # @import = Array.new
+    # # CSV.foreach(params[:file].path, headers: true) do |row|
+    # #   @import << row[0]
+    # # @assembly = Assembly.import(params[:file])
+    #
+    # end
   end
 
   private def memory_in_mb
