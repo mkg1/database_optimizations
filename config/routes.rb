@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   get 'reports/all_data'
   get 'reports/search'
+  get 'reports/choose_file'
   post 'reports/search' => 'reports#search', as: 'search_reports'
+  get 'reports/import'
+  resources :reports do
+    collection { post :import }
+  end
+
   # resources :reports do
   #   collection do
   #     get 'search'
