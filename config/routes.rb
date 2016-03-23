@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'reports/choose_file'
   post 'reports/search' => 'reports#search', as: 'search_reports'
   get 'reports/import'
+  post 'reports/send_email'
   resources :reports do
     collection { post :import }
   end
