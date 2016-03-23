@@ -54,7 +54,7 @@ class ReportsController < ApplicationController
   end
 
   def import
-    ImportCsvJob.perform_later()
+    ImportCsvJob.perform_later(params[:file].path)
 
     # CSV.foreach(params[:file].path, headers: true) do |row|
     #   a = Assembly.create!(name: row["Assembly Name"], run_on: row["Assembly Date"])
