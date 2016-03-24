@@ -1,5 +1,6 @@
 <h3>Please enter an email adddress to receive the report:</h3>
-  <%= form_tag reports_send_email_path do %>
-    <%= text_field_tag :address, nil, placeholder: "Email address" %>
-    <%= submit_tag "Send Email" %>
-  <% end %>
+<%= form_tag reports_send_email_path do %>
+  <%= email_field_tag :address, nil, placeholder: "Email address" %><br>
+  <%= text_field_tag :query, nil, placeholder: "Query" %><br>
+  <%= submit_tag "Send Email" %>
+<% end %>
