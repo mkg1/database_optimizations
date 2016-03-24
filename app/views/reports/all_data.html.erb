@@ -2,5 +2,6 @@
 <%= form_tag reports_send_email_path do %>
   <%= email_field_tag :address, nil, placeholder: "Email address" %><br>
   <%= text_field_tag :query, nil, placeholder: "Query" %><br>
+  <%= text_field_tag :limit, nil, placeholder: "Row limit" %><br>
   <%= submit_tag "Send Email" %>
 <% end %>

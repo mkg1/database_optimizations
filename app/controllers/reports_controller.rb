@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
   end
 
   def send_email
-    SendReportJob.perform_later(params[:address])
+    SendReportJob.perform_later(params[:address], params[:query], params[:limit])
   end
 
   def search
